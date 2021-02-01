@@ -112,7 +112,7 @@ class TaskControllerTest extends WebTestCase
     {
         $rep = $this->em->getRepository(User::class);
         $taskRep = $this->em->getRepository(Task::class);
-        $testTask = $taskRep->findOneBy([]);
+        $testTask = $taskRep->findOneBy(['isDone' => 0]);
         $id = $testTask->getId();
 
         /* No user connected */
@@ -181,9 +181,16 @@ class TaskControllerTest extends WebTestCase
     public function testDeleteTask()
     {
         $rep = $this->em->getRepository(User::class);
-        $taskRep = $this->em->getRepository(Task::class);
-        $testTask = $taskRep->findOneBy([]);
-        $id = $testTask->getId();
+       /* create a task with Evohe as owner */
+        $testTaskUser = $rep->findOneBy(['username' => 'Evohe']);
+        $task = new Task();
+        $task->setTitle('Title Test Task');
+        $task->setContent('Content');
+        $testTaskUser->addTask($task);
+        $this->em->persist($task);
+        $this->em->persist($testTaskUser);
+        $this->em->flush();
+        $id = $task->getId();
 
         /* No user connected */
         $this->client->request('GET', self::TASKS_BASE_URL . $id . self::TASK_DELETE_SUFFIX_URL);
