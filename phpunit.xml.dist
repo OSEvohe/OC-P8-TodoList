@@ -26,6 +26,7 @@
             <directory suffix=".php">src</directory>
             <exclude>
                 <file>src/kernel.php</file>
+                <file>src/DataFixtures/AppFixtures.php</file>
             </exclude>
         </whitelist>
     </filter>
