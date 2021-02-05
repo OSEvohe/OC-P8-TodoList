@@ -23,6 +23,7 @@ Code Climate
 * Php 7.3
 * Composer
 * A Database engine (Mysql, PostgreSQL...)
+* Php Xdebug extension (for Phpunit test)
 
 ## Installation
 * Clone or download the project
@@ -46,3 +47,5 @@ By default, you can log as admin with :
 
 ### Unit testing
 Tests require minimum data, samples data from fixture can be used
+* Basic tests : `php bin/phpunit`
+* Code coverage : `php bin/phpunit --coverage-html public/test-coverage`
