@@ -47,5 +47,6 @@ By default, you can log as admin with :
 
 ### Unit testing
 Tests require minimum data, samples data from fixture can be used
+* Copy `.env.test` to `.env.test.local` and edit database parameters
 * Basic tests : `php bin/phpunit`
 * Code coverage : `php bin/phpunit --coverage-html public/test-coverage`
